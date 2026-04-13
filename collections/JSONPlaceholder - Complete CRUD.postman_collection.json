@@ -29,6 +29,13 @@
               "    pm.expect(jsonData).to.have.property('userId');\r",
               "    });\r",
               "\r",
+              "// Check if the ID is a number and an integer.\r",
+              "pm.test(\"ID is a number and an integer\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.id).to.be.a('number');\r",
+              "    pm.expect(Number.isInteger(jsonData.id)).to.be.true;\r",
+              "});\r",
+              "\r",
               "// Save postId for future tests\r",
               "pm.test(\"Save postId for future tests\", function () {\r",
               "    pm.environment.set(\"postID\", pm.response.json().id);\r",
@@ -84,7 +91,7 @@
               "    type: \"object\",\r",
               "    required: [\"id\", \"title\", \"body\", \"userId\"],\r",
               "    properties: {\r",
-              "        id: { type: \"string\" },\r",
+              "        id: { type: \"integer\" },\r",
               "        title: { type: \"string\", minLenght: 1 },\r",
               "        body: { type: \"string\" },\r",
               "        userId: { type: \"integer\", minimun: 1 }\r",
@@ -198,7 +205,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"id\": {{postID}},\r\n    \"title\": \"Title Updated via PUT\",\r\n    \"body\": \"Body fully updated\",\r\n    \"userId\": 1\r\n}",
+          "raw": "{\r\n    \"id\": {{postID}},\r\n    \"title\": \"Title Updated via PUT\",\r\n    \"body\": \"Body Updated via PUT\",\r\n    \"userId\": 1\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -231,6 +238,11 @@
               "    pm.response.to.have.status(200);\r",
               "    });\r",
               "\r",
+              "// Body contains a title field\r",
+              "pm.test(\"Response body has a title field\", function () {\r",
+              "    pm.expect(pm.response.json()).to.have.property(\"title\");\r",
+              "});\r",
+              "\r",
               "// Response body contains updated post information\r",
               "pm.test(\"Response body contains updated post information\", function () {\r",
               "    pm.expect(pm.response.json().title).to.equal(\"Title Modified via PATCH\");\r",
@@ -247,7 +259,12 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"title\": \"Title Modified via PATCH\"\r\n}"
+          "raw": "{\r\n    \"title\": \"Title Modified via PATCH\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
         },
         "url": {
           "raw": "{{baseURL}}/posts/{{postID}}",
