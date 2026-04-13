@@ -2,6 +2,7 @@
   "info": {
     "_postman_id": "6610520f-8e41-4086-a64b-29423aac0318",
     "name": "JSONPlaceholder - Complete CRUD",
+    "description": "This collection demonstrates the complete CRUD lifecycle for the JSONPlaceholder `/posts` resource. It includes requests to create a post, retrieve a specific post by ID, list all posts, fully update a post, partially update a post, delete a post, and verify the deletion.\n\nThe collection is organized as a simple end-to-end workflow for practicing REST API operations and understanding how different HTTP methods behave in a typical resource-based API. It also uses variables such as `{{baseURL}}` and `{{postID}}` to make requests reusable and easier to manage across environments.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "53774654",
     "_collection_link": "https://go.postman.co/collection/53774654-6610520f-8e41-4086-a64b-29423aac0318?source=collection_link"
@@ -59,7 +60,8 @@
           "path": [
             "posts"
           ]
-        }
+        },
+        "description": "This request checks the Create workflow for the JSONPlaceholder `/posts` resource."
       },
       "response": []
     },
@@ -82,7 +84,7 @@
               "    type: \"object\",\r",
               "    required: [\"id\", \"title\", \"body\", \"userId\"],\r",
               "    properties: {\r",
-              "        id: { type: \"integer\" },\r",
+              "        id: { type: \"string\" },\r",
               "        title: { type: \"string\", minLenght: 1 },\r",
               "        body: { type: \"string\" },\r",
               "        userId: { type: \"integer\", minimun: 1 }\r",
@@ -115,7 +117,8 @@
             "posts",
             "{{postID}}"
           ]
-        }
+        },
+        "description": "This request checks if the post was created, checking the Read Workflow for a specific post"
       },
       "response": []
     },
@@ -160,7 +163,8 @@
           "path": [
             "posts"
           ]
-        }
+        },
+        "description": "This request lists the posts in `/posts`, checking the Read Workflow for all of them"
       },
       "response": []
     },
@@ -210,7 +214,8 @@
             "posts",
             "{{postID}}"
           ]
-        }
+        },
+        "description": "This request updates the created post, checking the Update Workflow"
       },
       "response": []
     },
@@ -253,7 +258,8 @@
             "posts",
             "{{postID}}"
           ]
-        }
+        },
+        "description": "This request updates the title of the created post, checking the Update Workflow for a single attribute"
       },
       "response": []
     },
@@ -266,7 +272,7 @@
             "exec": [
               "// Check the response status code is 200 or 204\r",
               "pm.test(\"Status code is 200 or 204\", function () {\r",
-              "    pm.response.to.have.status([200, 204]);\r",
+              "    pm.response.to.have.status(200,204);\r",
               "});"
             ],
             "type": "text/javascript",
@@ -287,7 +293,8 @@
             "posts",
             "{{postID}}"
           ]
-        }
+        },
+        "description": "This request deletes the created post"
       },
       "response": []
     },
@@ -321,7 +328,8 @@
             "posts",
             "{{postID}}"
           ]
-        }
+        },
+        "description": "This request verify if the created post was deleted, checking the Delete Workflow for a specific post"
       },
       "response": []
     }
