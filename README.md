@@ -1,5 +1,6 @@
 # 🧪 Testes de API - CRUD Completo com JSONPlaceholder
 
+[![GitHub](https://img.shields.io/badge/GitHub-Projeto-blue?style=flat-square&logo=github)](https://github.com/G-Aguiar-Dev/QA-JSONPlaceholder-Tests)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 
@@ -11,6 +12,18 @@ Uma coleção completa de testes para operações **CRUD** (Create, Read, Update
 - **Ambientes configuráveis** (Dev e Prod)
 - **Validação de schemas** JSON com suporte a assertions
 - **Execução headless** com Newman para CI/CD
+
+## 🔄 Sobre a API utilizada
+
+Este projeto foi originalmente concebido para testar a API pública [JSONPlaceholder](https://jsonplaceholder.typicode.com/). Entretanto, por se tratar de uma API *mock* que não persiste dados (operações de escrita são simuladas, e recursos criados não podem ser consultados ou alterados posteriormente), foi utilizado o **json-server** local, baseado na API JSONPlaceholder.
+
+O json-server cria uma API REST falsa a partir de um arquivo `db.json`, permitindo:
+- Persistência real durante a execução dos testes
+- Geração de IDs numéricos sequenciais (compatível com a maioria das APIs reais)
+- Execução de todas as operações CRUD sem limitações
+
+Portanto, embora o nome da coleção ainda faça referência ao JSONPlaceholder, **os testes são executados localmente** contra `http://localhost:3000`. Isso garante um ambiente confiável e reprodutível para validação do fluxo completo.
+
 
 ## 🎯 Cenários de Teste
 
@@ -27,13 +40,17 @@ Uma coleção completa de testes para operações **CRUD** (Create, Read, Update
 - **Node.js** v14.0 ou superior
 - **Postman** Desktop ou CLI ([Newman](https://www.npmjs.com/package/newman))
 - npm ou yarn
+- json-server
 
 ## 🚀 Instalação
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/JsonPlaceholder.git
-cd JsonPlaceholder
+git clone https://github.com/G-Aguiar-Dev/QA-JSONPlaceholder-Tests.git
+cd qa-jsonplaceholder-tests
+
+# Instale o JSON Server
+npm install -g json-server
 
 # Instale o Newman (se deseja executar via CLI)
 npm install -g newman
@@ -78,7 +95,7 @@ newman run "collections/JSONPlaceholder - Complete CRUD.postman_collection.json"
 ## 📂 Estrutura do Projeto
 
 ```
-JsonPlaceholder/
+.
 ├── collections/
 │   └── JSONPlaceholder - Complete CRUD.postman_collection.json
 ├── environments/
@@ -86,6 +103,7 @@ JsonPlaceholder/
 │   └── Prod.postman_environment.json
 ├── reports/                      # Relatórios gerados pelo Newman
 ├── .gitignore
+├── db.json                       # JSON utilizado pelo JSON Server
 └── README.md
 ```
 
