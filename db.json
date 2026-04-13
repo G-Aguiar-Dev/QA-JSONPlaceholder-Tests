@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "title": "json-server",
+      "body": "Lorem Ipsum",
+      "userId": "1",
+      "id": "-_dPeh7"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
