@@ -1,0 +1,16 @@
+# Arquivos sensíveis
+.env
+*.local.env
+
+# Dependências (caso use node scripts)
+node_modules/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
