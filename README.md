@@ -102,6 +102,24 @@ newman run "collections/JSONPlaceholder - Complete CRUD.postman_collection.json"
   --reporter-html-export "reports/newman-report.html"
 ```
 
+### Via Script Shell (.sh - Automação com Script)
+
+Um script `run-tests.sh` está disponível para automatizar a execução dos testes:
+
+```bash
+# Executar o script
+./run-tests.sh
+```
+
+**O script faz automaticamente:**
+- ✅ Verifica se os arquivos necessários existem (coleção e ambiente)
+- ✅ Cria o diretório `reports/` se não existir
+- ✅ Executa a coleção Postman com Newman
+- ✅ Gera relatório HTML em `reports/newman-report.html`
+- ✅ Para a execução se encontrar algum erro
+
+> **Nota:** O script assume que o **json-server** já está rodando em `http://localhost:3000`
+
 **Ambientes disponíveis:**
 - `environments/Dev.postman_environment.json` - Desenvolvimento
 - `environments/Prod.postman_environment.json` - Produção
@@ -118,6 +136,7 @@ newman run "collections/JSONPlaceholder - Complete CRUD.postman_collection.json"
 ├── reports/                      # Relatórios gerados pelo Newman
 ├── .gitignore
 ├── db.json                       # JSON utilizado pelo JSON Server
+├── run-tests.sh                  # Script de automação para executar testes
 └── README.md
 ```
 
@@ -129,6 +148,8 @@ newman run "collections/JSONPlaceholder - Complete CRUD.postman_collection.json"
 - ✅ Encadeamento de requisições (request chaining)
 - ✅ Execução headless com Newman
 - ✅ Geração de relatórios HTML
+- ✅ Automação de testes com scripts Shell (.sh)
+- ✅ Configuração e uso de JSON Server para mocks local
 - ✅ Boas práticas de versionamento Git
 
 ## 📝 Notas Importantes
@@ -136,6 +157,7 @@ newman run "collections/JSONPlaceholder - Complete CRUD.postman_collection.json"
 - A **ordem das requisições** na coleção é importante, pois algumas dependem de IDs retornados pelas anteriores
 - Certifique-se de que o **ambiente correto está selecionado** antes de executar os testes
 - Os **relatórios** gerados pelo Newman são salvos em `reports/`
+- O **json-server** deve estar rodando antes de executar os testes (em http://localhost:3000)
 
 ## 📚 Referências
 
