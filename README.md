@@ -39,8 +39,19 @@ Portanto, embora o nome da coleção ainda faça referência ao JSONPlaceholder,
 
 - **Node.js** v14.0 ou superior
 - **Postman** Desktop ou CLI ([Newman](https://www.npmjs.com/package/newman))
+- **JSON Server v0.17.4** (a versão padrão 1.x contém bugs que afetam os testes)
 - npm ou yarn
-- json-server
+
+## ⚠️ Por que usar a versão 0.17.4 do json-server?
+
+A versão mais recente do `json-server` (1.x) apresenta dois problemas que inviabilizam os testes CRUD completos:
+
+1. **Geração de IDs aleatórios (strings)** – em vez de números sequenciais, o que quebra validações de tipo e expectativas de ordenação.
+2. **Bug no método `PUT` (Motivo Decisivo)** – atualizações de registros criados dinamicamente retornam erro `500`, impossibilitando o teste de atualização completa.
+Por esses motivos, este projeto utiliza a **última versão estável da linha 0.x (`0.17.4`)** , que:
+- Gera IDs numéricos sequenciais (1, 2, 3...)
+- Suporta todas as operações CRUD sem erros
+- É amplamente documentada e testada pela comunidade
 
 ## 🚀 Instalação
 
@@ -50,7 +61,10 @@ git clone https://github.com/G-Aguiar-Dev/QA-JSONPlaceholder-Tests.git
 cd qa-jsonplaceholder-tests
 
 # Instale o JSON Server
-npm install -g json-server
+## Se você já tiver uma versão mais recente instalada, desinstale primeiro com:
+npm uninstall -g json-server
+## Após isso, instale globalmente a versão utilizada
+npm install -g json-server@0.17.4
 
 # Instale o Newman (se deseja executar via CLI)
 npm install -g newman
@@ -128,6 +142,7 @@ newman run "collections/JSONPlaceholder - Complete CRUD.postman_collection.json"
 - [Postman Learning Center](https://learning.postman.com/)
 - [Newman Documentation](https://learning.postman.com/docs/running-collections/using-newman-cli/)
 - [JSONPlaceholder API](https://jsonplaceholder.typicode.com/)
+- [JSON Server](https://github.com/typicode/json-server)
 
 ## 📄 Licença
 
