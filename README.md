@@ -3,6 +3,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Projeto-blue?style=flat-square&logo=github)](https://github.com/G-Aguiar-Dev/QA-JSONPlaceholder-Tests)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
+[![CI](https://github.com/G-Aguiar-Dev/QA-JSONPlaceholder-Tests/actions/workflows/ci-newman.yml/badge.svg?nocache=1)](https://github.com/G-Aguiar-Dev/QA-JSONPlaceholder-Tests/actions/workflows/ci-newman.yml)
 
 Uma coleção completa de testes para operações **CRUD** (Create, Read, Update, Delete) em uma API REST, utilizando a plataforma **Postman** com suporte a execução automatizada via **Newman**.
 
