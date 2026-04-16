@@ -20,8 +20,8 @@ jobs:
 
             - name: Start json-server in the background
               run: |
-                json-server --watch db.json --port 3000 --host 0.0.0.0 &
-                sleep 3
+                npx json-server@0.17.4 --watch db.json --port 3000 --host 0.0.0.0 &
+                sleep 5
 
             - name: Verify API is running
               run: curl -f http://localhost:3000/posts || exit 1
