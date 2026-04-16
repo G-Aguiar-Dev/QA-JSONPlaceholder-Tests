@@ -29,11 +29,14 @@ jobs:
                 json-server --watch db.json --port 3000 --host 0.0.0.0 &
                 sleep 3
 
+            - name: Verify API is running
+              run: curl -f http://localhost:3000/posts || exit 1
+              
             - name: Run Newman tests
               run: |
-                newman run collections/JSONPlaceholder - Complete CRUD.postman_collection.json \
-                -e environments/Dev.postman_environment.json \
-                -r html --reporter-html-export newman-report.html
+                newman run "collections/JSONPlaceholder - Complete CRUD.postman_collection.json" \
+                -e "environments/Dev.postman_environment.json" \
+                -r html --reporter-html-export reports/newman-report.html
 
             - name: Upload Newman report
               uses: actions/upload-artifact@v4
